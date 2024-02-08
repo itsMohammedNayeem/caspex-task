@@ -54,3 +54,8 @@ npm run dev
 ## Contributing
 
 Contributions are welcome! Please fork the repository and submit a pull request with your improvements.
+
+
+## Screenshot
+<img width="1292" alt="Screenshot 2024-02-08 at 11 40 49 PM" src="https://github.com/itsMohammedNayeem/caspex-task/assets/127741549/c8f681ce-a50e-4ac7-b0c5-0a9fc45e4bc2">
+
