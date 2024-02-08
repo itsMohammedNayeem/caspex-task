@@ -8,7 +8,7 @@ const CharacterGrid: FC<CharacterGridProps> = ({ characters }) => {
   return (
     <div className="grid gap-4 grid-cols-5">
       {characters.map((character) => (
-        <div key={character.id} className="text-center p-2">
+        <div key={character.id} className="text-center p-2 items-center flex flex-col">
               <img src={character.image} alt={character.name} className="rounded-full size-24" />
           <p className='text-white text-xs mt-2'>{character.name}</p>
         </div>
