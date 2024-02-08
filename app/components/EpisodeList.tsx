@@ -1,57 +1,46 @@
 'use client';
 import React, { FC, useEffect, useState } from "react";
-import { Character, Episode, EpisodeListProps } from "../types";
+import { Character, EpisodeListProps } from "../types"; // Ensure correct import paths
 import CharacterGrid from "./CharacterGrid";
 
 const EpisodeList: FC<EpisodeListProps> = ({ episodes }) => {
-  const [selectedEpisode, setSelectedEpisode] = useState<Episode["id"] | null>(null);
+  // Set the default selected episode to 1
+  const [selectedEpisodeId, setSelectedEpisodeId] = useState<number>(1);
   const [characters, setCharacters] = useState<Character[]>([]);
 
   useEffect(() => {
     const fetchCharacters = async () => {
-      if (selectedEpisode) {
-        const data = await fetch(
-          `https://rickandmortyapi.com/api/episode/${selectedEpisode}`
-        )
-          .then((res) => res.json())
-          .then((data) => data.characters);
+      // Find the episode by the selectedEpisodeId
+      const episodeData = episodes.find(ep => ep.id === selectedEpisodeId);
+      if (!episodeData) return;
 
-        const characterData = await Promise.all(
-          data.map((character: string) =>
-            fetch(character).then((res) => res.json())
-          )
-        );
-        setCharacters(characterData);
-      }
+      // Fetch characters for the selected episode
+      const characterData = await Promise.all(
+        episodeData.characters.map((characterUrl: string) =>
+          fetch(characterUrl).then(res => res.json())
+        )
+      );
+
+      setCharacters(characterData);
     };
 
     fetchCharacters();
-  }, [selectedEpisode]);
-
-  const handleEpisodeClick = (episodeId: Episode["id"]) => {
-    setSelectedEpisode(episodeId === selectedEpisode ? null : episodeId);
-  };
+  }, [selectedEpisodeId, episodes]);
 
   return (
     <div className="flex">
       <ul className="border-r-2 border-gray-200 max-h-[700px] overflow-y-scroll">
-
         {episodes.map((episode) => (
           <li
             key={episode.id}
-            onClick={() => handleEpisodeClick(episode.id)}
-            className={`p-2 text-sm text-pretty mr-2 cursor-pointer ${
-              episode.id === selectedEpisode ? 'text-blue-500' : 'text-white'
-            } hover:bg-blue-200 hover:text-black active:bg-blue-300 active:text-black transition-colors duration-300 ease-in-out`}
+            onClick={() => setSelectedEpisodeId(episode.id === selectedEpisodeId ? 1 : episode.id)} // Revert to episode 1 if the same episode is clicked
+            className={`p-2 text-sm cursor-pointer text-white hover:bg-blue-200 hover:text-black ${episode.id === selectedEpisodeId ? 'bg-blue-500' : 'bg-transparent'}`}
           >
             {episode.name}
           </li>
         ))}
       </ul>
-      <div className="flex flex-col items-center ml-2">
-        <h3 className="text-white text-2xl mb-2">Characters</h3>
-        <CharacterGrid characters={characters} />
-      </div>
+      <CharacterGrid characters={characters} />
     </div>
   );
 };
