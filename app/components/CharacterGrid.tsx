@@ -1,25 +1,20 @@
+'use client';
 import React from 'react';
+import { CharacterGridProps } from '../types';
 
-interface Character {
-  id: number;
-  name: string;
-  image: string;
-}
-
-interface CharacterGridProps {
-  characters: Character[];
-}
 
 const CharacterGrid: React.FC<CharacterGridProps> = ({ characters }) => {
+    console.log("🚀 ~ characters:", characters)
+    
   return (
     <div className="grid grid-cols-4 gap-4">
       {characters.map((character) => (
         <div key={character.id} className="text-center p-2 border">
-          <img src={character.image} alt={character.name} className="mx-auto" />
-          <p>{character.name}</p>
+          <img src="https://rickandmortyapi.com/api/character/avatar/435.jpeg" alt={character.name} className="h-24 w-auto rounded-full" />
+          <p className='text-white text-xs mt-2'>{character.name}</p>
         </div>
       ))}
-    </div>
+      </div>
   );
 };
 

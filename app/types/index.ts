@@ -1,4 +1,4 @@
-interface Episode {
+export interface Episode {
     id: number;
     name: string;
     air_date: string;
@@ -6,7 +6,7 @@ interface Episode {
     characters: string[];
   }
   
-  interface Character {
+  export interface Character {
     id: number;
     name: string;
     image: string;
@@ -14,5 +14,13 @@ interface Episode {
   
   interface HomeProps {
     initialEpisodes: Episode[];
+  }
+  
+  export interface CharacterGridProps {
+    characters: Character[];
+  }
+  
+  export interface EpisodeListProps {
+    episodes: Episode[];
   }
   
