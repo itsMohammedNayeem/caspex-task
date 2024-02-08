@@ -4,27 +4,33 @@ import { Character, Episode, EpisodeListProps } from "../types";
 import CharacterGrid from "./CharacterGrid";
 
 const EpisodeList: FC<EpisodeListProps> = ({ episodes }) => {
-  const [episode, setEpisode] = useState<Episode["id"]>(1);
+  const [selectedEpisode, setSelectedEpisode] = useState<Episode["id"] | null>(null);
   const [characters, setCharacters] = useState<Character[]>([]);
 
   useEffect(() => {
     const fetchCharacters = async () => {
-      const data = await fetch(
-        `https://rickandmortyapi.com/api/episode/${episode}`
-      )
-        .then((res) => res.json())
-        .then((data) => data.characters);
-
-      const characterData = await Promise.all(
-        data.map((character: string) =>
-          fetch(character).then((res) => res.json())
+      if (selectedEpisode) {
+        const data = await fetch(
+          `https://rickandmortyapi.com/api/episode/${selectedEpisode}`
         )
-      );
-      setCharacters(characterData);
+          .then((res) => res.json())
+          .then((data) => data.characters);
+
+        const characterData = await Promise.all(
+          data.map((character: string) =>
+            fetch(character).then((res) => res.json())
+          )
+        );
+        setCharacters(characterData);
+      }
     };
 
     fetchCharacters();
-  }, [episode]);
+  }, [selectedEpisode]);
+
+  const handleEpisodeClick = (episodeId: Episode["id"]) => {
+    setSelectedEpisode(episodeId === selectedEpisode ? null : episodeId);
+  };
 
   return (
     <div className="flex">
@@ -33,8 +39,10 @@ const EpisodeList: FC<EpisodeListProps> = ({ episodes }) => {
         {episodes.map((episode) => (
           <li
             key={episode.id}
-            onClick={() => setEpisode(episode.id)}
-            className="p-2 text-sm text-pretty mr-2 cursor-pointer text-white hover:bg-blue-200 hover:text-black active:bg-blue-300 active:text-black transition-colors duration-300 ease-in-out"
+            onClick={() => handleEpisodeClick(episode.id)}
+            className={`p-2 text-sm text-pretty mr-2 cursor-pointer ${
+              episode.id === selectedEpisode ? 'text-blue-500' : 'text-white'
+            } hover:bg-blue-200 hover:text-black active:bg-blue-300 active:text-black transition-colors duration-300 ease-in-out`}
           >
             {episode.name}
           </li>
