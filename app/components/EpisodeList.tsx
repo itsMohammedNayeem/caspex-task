@@ -1,9 +1,9 @@
 'use client';
-import React, { FC, useEffect, useState } from "react";
+import React, { FC, memo, useEffect, useState } from "react";
 import { Character, EpisodeListProps } from "../types"; // Ensure correct import paths
 import CharacterGrid from "./CharacterGrid";
 
-const EpisodeList: FC<EpisodeListProps> = ({ episodes }) => {
+const EpisodeList: FC<EpisodeListProps> = memo(({ episodes }) => {
   // Set the default selected episode to 1
   const [selectedEpisodeId, setSelectedEpisodeId] = useState<number>(1);
   const [characters, setCharacters] = useState<Character[]>([]);
@@ -49,6 +49,6 @@ const EpisodeList: FC<EpisodeListProps> = ({ episodes }) => {
         </div>
     </div>
   );
-};
+});
 
 export default EpisodeList;
