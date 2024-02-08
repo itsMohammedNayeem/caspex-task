@@ -1,4 +1,4 @@
-"use client";
+'use client';
 import React, { FC, useEffect, useState } from "react";
 import { Character, Episode, EpisodeListProps } from "../types";
 import CharacterGrid from "./CharacterGrid";
@@ -28,8 +28,7 @@ const EpisodeList: FC<EpisodeListProps> = ({ episodes }) => {
 
   return (
     <div className="flex">
-      <ul className="border-r-2 border-gray-200">
-        <h3 className="text-white text-2xl mb-2">Episodes</h3>
+      <ul className="border-r-2 border-gray-200 max-h-screen overflow-y-scroll">
 
         {episodes.map((episode) => (
           <li
@@ -41,7 +40,7 @@ const EpisodeList: FC<EpisodeListProps> = ({ episodes }) => {
           </li>
         ))}
       </ul>
-      <div className="flex flex-col items-center ml-2">
+      <div className="flex flex-col items-center ml-2 max-h-screen overflow-y-scroll">
         <h3 className="text-white text-2xl mb-2">Characters</h3>
         <CharacterGrid characters={characters} />
       </div>
