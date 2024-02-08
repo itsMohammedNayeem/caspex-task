@@ -28,7 +28,7 @@ const EpisodeList: FC<EpisodeListProps> = ({ episodes }) => {
 
   return (
     <div className="flex">
-      <ul className="border-r-2 border-gray-200 max-h-screen overflow-y-scroll">
+      <ul className="border-r-2 border-gray-200 max-h-[700px] overflow-y-scroll">
 
         {episodes.map((episode) => (
           <li
@@ -40,7 +40,7 @@ const EpisodeList: FC<EpisodeListProps> = ({ episodes }) => {
           </li>
         ))}
       </ul>
-      <div className="flex flex-col items-center ml-2 max-h-screen overflow-y-scroll">
+      <div className="flex flex-col items-center ml-2">
         <h3 className="text-white text-2xl mb-2">Characters</h3>
         <CharacterGrid characters={characters} />
       </div>
