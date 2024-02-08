@@ -14,4 +14,6 @@ const CharacterGrid: FC<CharacterGridProps> = memo(({ characters }) => {
   );
 });
 
+CharacterGrid.displayName = "CharacterGrid";
+
 export default CharacterGrid;
