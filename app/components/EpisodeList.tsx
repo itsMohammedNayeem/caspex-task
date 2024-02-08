@@ -29,6 +29,8 @@ const EpisodeList: FC<EpisodeListProps> = ({ episodes }) => {
   return (
     <div className="flex">
       <ul className="border-r-2 border-gray-200">
+        <h3 className="text-white text-2xl mb-2">Episodes</h3>
+
         {episodes.map((episode) => (
           <li
             key={episode.id}
@@ -42,7 +44,7 @@ const EpisodeList: FC<EpisodeListProps> = ({ episodes }) => {
       <div className="flex flex-col items-center ml-2">
         <h3 className="text-white text-2xl mb-2">Characters</h3>
         <CharacterGrid characters={characters} />
-        </div>
+      </div>
     </div>
   );
 };

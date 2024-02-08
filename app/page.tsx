@@ -8,15 +8,9 @@ export default async function Home() {
     <main className="flex min-h-screen font-mono flex-col items-center justify-between p-24">
       <div className="container mx-auto p-4">
         <div className="flex">
-            <ul className="border-gray-200 text-balance">
-
-              <h3 className="text-white text-2xl mb-2">
-                Episodes
-              </h3>
-
-              <EpisodeList episodes={data} />
-              
-            </ul>
+          <ul className="border-gray-200 text-balance">
+            <EpisodeList episodes={data} />
+          </ul>
         </div>
       </div>
     </main>
