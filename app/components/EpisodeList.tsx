@@ -34,13 +34,19 @@ const EpisodeList: FC<EpisodeListProps> = ({ episodes }) => {
           <li
             key={episode.id}
             onClick={() => setSelectedEpisodeId(episode.id === selectedEpisodeId ? 1 : episode.id)} // Revert to episode 1 if the same episode is clicked
-            className={`p-2 text-sm cursor-pointer text-white hover:bg-blue-200 hover:text-black ${episode.id === selectedEpisodeId ? 'bg-blue-500' : 'bg-transparent'}`}
+            className={`p-2 text-sm cursor-pointer text-white hover:bg-red-200 hover:text-black ${episode.id === selectedEpisodeId ? 'bg-red-500 border' : 'bg-transparent'}`}
           >
             {episode.name}
           </li>
         ))}
       </ul>
-      <CharacterGrid characters={characters} />
+
+      <div className="flex-1 p-4">
+        <h2 className="text-white text-md mb-2 text-pretty">
+          {characters.length} characters in episode "{episodes.find(ep => ep.id === selectedEpisodeId)?.name}"
+        </h2>
+        <CharacterGrid characters={characters} />
+        </div>
     </div>
   );
 };
