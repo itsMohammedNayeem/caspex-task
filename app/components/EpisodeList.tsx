@@ -1,9 +1,9 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 import { Character, Episode, EpisodeListProps } from "../types";
 import CharacterGrid from "./CharacterGrid";
 
-const EpisodeList: React.FC<EpisodeListProps> = ({ episodes }) => {
+const EpisodeList: FC<EpisodeListProps> = ({ episodes }) => {
   const [episode, setEpisode] = useState<Episode["id"]>(1);
   const [characters, setCharacters] = useState<Character[]>([]);
 
@@ -39,7 +39,10 @@ const EpisodeList: React.FC<EpisodeListProps> = ({ episodes }) => {
           </li>
         ))}
       </ul>
-      <CharacterGrid characters={characters} />
+      <div className="flex flex-col items-center ml-2">
+        <h3 className="text-white text-2xl mb-2">Characters</h3>
+        <CharacterGrid characters={characters} />
+        </div>
     </div>
   );
 };
