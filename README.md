@@ -38,8 +38,10 @@ npm run dev
 ## Usage
 
 - Navigate to the home page to see a list of episodes.
-- Click on an episode to view the characters featured in that episode.
 - Scroll through the list of characters to see their names and images.
+- Initially, the first episode is selected and the characters of that episode are displayed.
+- Click on the episode name to view the characters of that episode.
+- Unselect the episode to view the characters of first episode.
 
 ## Code Structure
 
