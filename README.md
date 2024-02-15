@@ -61,3 +61,7 @@ Contributions are welcome! Please fork the repository and submit a pull request 
 ## Screenshot
 
 <img width="1292" alt="Screenshot 2024-02-08 at 11 40 49 PM" src="https://github.com/itsMohammedNayeem/caspex-task/assets/127741549/c8f681ce-a50e-4ac7-b0c5-0a9fc45e4bc2">
+
+<img width="1468" alt="Screenshot 2024-02-15 at 11 44 35 PM" src="https://github.com/itsMohammedNayeem/caspex-task/assets/127741549/216a7192-2714-4285-85d7-5a124e2d4711">
+
+<img width="1468" alt="Screenshot 2024-02-15 at 11 44 47 PM" src="https://github.com/itsMohammedNayeem/caspex-task/assets/127741549/91e2292c-24ff-4d74-b5fd-8d5a5bf7b353">
