@@ -1,12 +1,15 @@
 # Rick and Morty Character Viewer
 
-This project is a simple web application that allows users to browse characters from the "Rick and Morty" TV series by episode.
+This project provides a modern, interactive web application for exploring characters from the "Rick and Morty" API. Built with Next.js, it showcases character details along with the episodes in which they appear. The application leverages Tailwind CSS for styling, ensuring a responsive and visually appealing interface.
 
 ## Features
 
-- View a list of episodes from the "Rick and Morty" series.
-- Select an episode to see the characters featured in that episode.
-- Characters are displayed in a grid layout with their name and image.
+- **Character Grid**: Displays characters in a responsive grid layout. Each character is presented in a card that includes their image and name.
+- **Character Detail**: Clicking on a character card navigates to a detailed view of that character, displaying their name, status, species, and a list of episodes they appear in.
+- **Episodes UI**: In the character detail view, episodes are listed with modern card designs, showing the episode name and air date.
+- **Modern Styling**: Utilizes Tailwind CSS for a modern, responsive design that adjusts beautifully across devices.
+- **Error Handling**: Implements error handling for API requests, providing user feedback on loading states and errors.
+
 
 ## Technologies stack
 
