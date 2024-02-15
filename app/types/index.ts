@@ -25,6 +25,7 @@ export interface EpisodeListProps {
 }
 
 export type CharacterType = {
+  image: string | undefined;
   name?: string;
   status?: string;
   species?: string;

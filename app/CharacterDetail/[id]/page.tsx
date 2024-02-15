@@ -1,3 +1,4 @@
+// app/CharacterDetail/[id]/page.tsx
 "use client";
 import { CharacterType } from "@/app/types";
 import { usePathname } from "next/navigation";
@@ -55,26 +56,49 @@ const CharacterDetail = () => {
   if (error) return <p className="text-red-500 text-center text-lg">{error}</p>;
 
   return (
-    <div className="max-w-xl mx-auto mt-10">
-      <h1 className="text-3xl font-bold text-blue-600 mb-2">
-        {character?.name}
-      </h1>
-      <p className="text-md text-gray-800">
-        <strong>Status:</strong> {character?.status}
-      </p>
-      <p className="text-md text-gray-800">
-        <strong>Species:</strong> {character?.species}
-      </p>
-      <h2 className="text-2xl text-green-500 my-4">Episodes:</h2>
-      <ul className="list-disc pl-5">
-        {episodes.map((episode, index) => (
-          <li key={index} className="text-md text-purple-700 mb-1">
-            {episode.name} -{" "}
-            <span className="text-gray-600">{episode.air_date}</span>
-          </li>
-        ))}
-      </ul>
-    </div>
+    <>
+      <div className="font-mono max-w-md mx-auto bg-white rounded-lg overflow-hidden shadow-lg my-5">
+        {character?.image && (
+          <img src={character.image} alt={character.name} className="w-full" />
+        )}
+        <div className="px-6 py-4">
+          <h1 className="font-bold text-xl mb-2 text-gray-800">
+            {character?.name}
+          </h1>
+          <p className="text-gray-600 text-base">
+            <strong>Status:</strong> {character?.status}
+          </p>
+          <p className="text-gray-600 text-base">
+            <strong>Species:</strong> {character?.species}
+          </p>
+        </div>
+      </div>
+
+      <div className="font-mono mt-6 p-4">
+        <h2 className="text-2xl font-semibold mb-4 text-slate-300">
+          Episodes:
+        </h2>
+        <div className="flex flex-wrap -mx-2">
+          {episodes.map((episode, index) => (
+            <div
+              key={index}
+              className="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 px-2 mb-4"
+            >
+              <div className="bg-white rounded-lg overflow-hidden shadow-md">
+                <div className="px-6 py-4">
+                  <div className="font-bold text-md mb-1 text-red-400">
+                    {episode.name}
+                  </div>
+                  <p className="text-gray-600 text-sm">
+                    Air Date: {episode.air_date}
+                  </p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </>
   );
 };
 
