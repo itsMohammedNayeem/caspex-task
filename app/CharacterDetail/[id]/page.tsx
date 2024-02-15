@@ -67,7 +67,11 @@ const CharacterDetail = () => {
         </h2>
         <div className="flex flex-wrap -mx-2">
           {episodes.map((episode, index) => (
-            <EpisodeDetailCard index={index} episode={episode} />
+            <EpisodeDetailCard
+              key={episode.id}
+              index={index}
+              episode={episode}
+            />
           ))}
         </div>
       </div>
