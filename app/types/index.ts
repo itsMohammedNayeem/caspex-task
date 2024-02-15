@@ -29,5 +29,16 @@ export type CharacterType = {
   name?: string;
   status?: string;
   species?: string;
+  type?: string;
+  gender?: string;
+  location?: {
+    name: string;
+  };
   episode?: string[];
+};
+
+export type EpisodeType = {
+  name: string;
+  air_date?: string;
+  episode?: string;
 };

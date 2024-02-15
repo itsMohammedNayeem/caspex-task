@@ -1,5 +1,7 @@
 // app/CharacterDetail/[id]/page.tsx
 "use client";
+import { CharacterDetailCard } from "@/app/components/CharacterDetailCard";
+import { EpisodeDetailCard } from "@/app/components/EpisodeDetailCard";
 import { CharacterType } from "@/app/types";
 import { usePathname } from "next/navigation";
 import React, { useEffect, useState } from "react";
@@ -11,7 +13,7 @@ const CharacterDetail = () => {
   const [episodes, setEpisodes] = useState<any[]>([]);
 
   const pathname = usePathname();
-  const id = pathname.split("/").pop(); // Use pop() to get the last segment
+  const id = pathname.split("/").pop();
 
   useEffect(() => {
     const fetchCharacter = async () => {
@@ -56,49 +58,20 @@ const CharacterDetail = () => {
   if (error) return <p className="text-red-500 text-center text-lg">{error}</p>;
 
   return (
-    <>
-      <div className="font-mono max-w-md mx-auto bg-white rounded-lg overflow-hidden shadow-lg my-5">
-        {character?.image && (
-          <img src={character.image} alt={character.name} className="w-full" />
-        )}
-        <div className="px-6 py-4">
-          <h1 className="font-bold text-xl mb-2 text-gray-800">
-            {character?.name}
-          </h1>
-          <p className="text-gray-600 text-base">
-            <strong>Status:</strong> {character?.status}
-          </p>
-          <p className="text-gray-600 text-base">
-            <strong>Species:</strong> {character?.species}
-          </p>
-        </div>
-      </div>
+    <div className="container mx-auto p-4 max-w-3xl space-y-6 bg-gray-400">
+      {character && <CharacterDetailCard character={character} />}
 
       <div className="font-mono mt-6 p-4">
-        <h2 className="text-2xl font-semibold mb-4 text-slate-300">
+        <h2 className="text-2xl font-semibold mb-4 text-slate-700">
           Episodes:
         </h2>
         <div className="flex flex-wrap -mx-2">
           {episodes.map((episode, index) => (
-            <div
-              key={index}
-              className="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 px-2 mb-4"
-            >
-              <div className="bg-white rounded-lg overflow-hidden shadow-md">
-                <div className="px-6 py-4">
-                  <div className="font-bold text-md mb-1 text-red-400">
-                    {episode.name}
-                  </div>
-                  <p className="text-gray-600 text-sm">
-                    Air Date: {episode.air_date}
-                  </p>
-                </div>
-              </div>
-            </div>
+            <EpisodeDetailCard index={index} episode={episode} />
           ))}
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
