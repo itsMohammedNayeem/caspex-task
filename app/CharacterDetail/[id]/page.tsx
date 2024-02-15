@@ -58,7 +58,7 @@ const CharacterDetail = () => {
   if (error) return <p className="text-red-500 text-center text-lg">{error}</p>;
 
   return (
-    <div className="container mx-auto p-4 max-w-3xl space-y-6 bg-gray-400">
+    <div className="p-4 space-y-6 bg-gray-400">
       {character && <CharacterDetailCard character={character} />}
 
       <div className="font-mono mt-6 p-4">
